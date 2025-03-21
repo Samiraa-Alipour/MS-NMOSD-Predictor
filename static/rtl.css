@@ -1,0 +1,92 @@
+/* rtl.css - for Persian version */
+.rtl {
+    direction: rtl;
+    text-align: right;
+}
+
+.rtl .logo {
+    flex-direction: row-reverse;
+}
+
+.rtl .logo-icon {
+    margin-right: 0;
+    margin-left: 15px;
+}
+
+.rtl .logo-icon i:last-child {
+    right: auto;
+    left: -10px;
+}
+
+.rtl .feature-section h2 {
+    flex-direction: row-reverse;
+}
+
+.rtl .action-section button {
+    flex-direction: row-reverse;
+}
+
+.rtl select {
+    background-position: calc(0% + 15px) center;
+    padding-right: 15px;
+    padding-left: 35px;
+}
+
+.rtl .prediction-summary {
+    flex-direction: row-reverse;
+}
+
+.rtl .prob-item {
+    flex-direction: row-reverse;
+}
+
+.rtl .prob-value {
+    right: auto;
+    left: 10px;
+}
+
+/* Updated guideline list styling */
+.rtl .guidelines-list li {
+    display: block; /* Reset to block for natural RTL flow */
+    margin-bottom: 10px;
+}
+
+.rtl .guideline-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.rtl .guideline-content {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping for long content */
+    align-items: flex-start;
+    width: 100%;
+    gap: 5px;
+}
+
+.rtl .option-text {
+    order: 1; /* Ensure Persian text comes first */
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.rtl .feature-list.ltr {
+    direction: ltr;
+    display: inline-block;
+    text-align: left;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    order: 2; /* Ensure English features come after Persian text */
+}
+
+/* For smaller screens */
+@media (max-width: 768px) {
+    .rtl .prediction-summary {
+        align-items: flex-end;
+    }
+    
+    .rtl .prob-item {
+        align-items: flex-end;
+    }
+}

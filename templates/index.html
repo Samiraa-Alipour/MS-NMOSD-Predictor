@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neuro-Optic Detection System | MS vs NMO-SD</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="dark-theme">
+
+    <div class="top-controls">
+        <div class="language-selector">
+            <button id="language-toggle" class="language-btn">
+                <i class="fas fa-globe"></i> فارسی
+            </button>
+        </div>
+        <div class="theme-selector">
+            <button id="theme-toggle" class="theme-btn">
+                <i class="fas fa-moon"></i> Light Mode
+            </button>
+        </div>
+    </div>
+
+    <div class="container">
+        <header>
+            <div class="logo">
+                <span class="logo-icon"><i class="fas fa-brain"></i><i class="fas fa-eye"></i></span>
+                <h1>Neuro-Optic Detection System</h1>
+            </div>
+            <p class="tagline">Advanced Detection system for MS vs NMOSD</p>
+        </header>
+
+        <div class="main-content">
+            <div class="feature-sections-container">
+                <div class="feature-column">
+                    <div class="feature-section oct-section">
+                        <h2><i class="fas fa-microscope"></i> OCT Examination Features</h2>
+                        <div class="feature-inputs">
+                            <div class="form-group">
+                                <label for="prnfl">pRNFL</label>
+                                <input type="number" id="prnfl" step="0.1" placeholder="Enter value">
+                            </div>
+                            <div class="form-group">
+                                <label for="trnfl">tRNFL</label>
+                                <input type="number" id="trnfl" step="0.1" placeholder="Enter value">
+                            </div>
+                            <div class="form-group">
+                                <label for="irnfl">iRNFL</label>
+                                <input type="number" id="irnfl" step="0.1" placeholder="Enter value">
+                            </div>
+                            <div class="form-group">
+                                <label for="srnfl">sRNFL</label>
+                                <input type="number" id="srnfl" step="0.1" placeholder="Enter value">
+                            </div>
+                            <div class="form-group">
+                                <label for="nrnfl">nRNFL</label>
+                                <input type="number" id="nrnfl" step="0.1" placeholder="Enter value">
+                            </div>
+                            <div class="form-group">
+                                <label for="gcipl">GCIPL Thickness</label>
+                                <input type="number" id="gcipl" step="0.1" placeholder="Enter value">
+                            </div>
+                            <div class="form-group">
+                                <label for="mv_gcipl">Macular volume GCIPL</label>
+                                <input type="number" id="mv_gcipl" step="0.1" placeholder="Enter value">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="feature-column">
+                    <div class="feature-section demographic-section">
+                        <h2><i class="fas fa-user-circle"></i> Demographic Features</h2>
+                        <div class="feature-inputs">
+                            <div class="form-group">
+                                <label for="age">Age (years)</label>
+                                <input type="number" id="age" min="1" max="120" placeholder="Enter age">
+                            </div>
+                            <div class="form-group">
+                                <label>Sex</label>
+                                <div class="radio-group">
+                                    <div class="radio-option">
+                                        <input type="radio" id="male" name="sex" value="Male">
+                                        <label for="male">Male</label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <input type="radio" id="female" name="sex" value="Female">
+                                        <label for="female">Female</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="feature-section vep-section">
+                        <h2><i class="fas fa-wave-square"></i> VEP Examination Features</h2>
+                        <div class="feature-inputs">
+                            <div class="form-group">
+                                <label for="vep_right_amp">VEP-Right eye amplitude</label>
+                                <input type="number" id="vep_right_amp" step="0.1" placeholder="Enter value">
+                            </div>
+                            <div class="form-group">
+                                <label for="vep_right_latency">VEP-Right eye P100 latency</label>
+                                <input type="number" id="vep_right_latency" step="0.1" placeholder="Enter value">
+                            </div>
+                            <div class="form-group">
+                                <label for="vep_left_amp">VEP-Left eye amplitude</label>
+                                <input type="number" id="vep_left_amp" step="0.1" placeholder="Enter value">
+                            </div>
+                            <div class="form-group">
+                                <label for="vep_left_latency">VEP-Left eye P100 latency</label>
+                                <input type="number" id="vep_left_latency" step="0.1" placeholder="Enter value">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-section">
+                <button id="predict-btn" class="predict-btn">
+                    <i class="fas fa-brain"></i> Predict
+                </button>
+                <button id="clear-btn" class="clear-btn">
+                    <i class="fas fa-eraser"></i> Clear All
+                </button>
+                <button id="info-btn" class="info-btn">
+                    <i class="fas fa-info-circle"></i> Input Guidelines
+                </button>
+            </div>
+
+
+            <div id="result-container" class="result-container hidden">
+                <div class="result-header">
+                    <h2><i class="fas fa-chart-pie"></i> Prediction Result</h2>
+                    <button class="close-result">×</button>
+                </div>
+                <div class="result-content">
+                    <div class="prediction-summary">
+                        <div class="prediction-label">Predicted Diagnosis:</div>
+                        <div id="prediction-class" class="prediction-value"></div>
+                    </div>
+                    <div class="prediction-details">
+                        <div class="probability-bars">
+                            <div class="prob-item">
+                                <div class="prob-label">MS Probability:</div>
+                                <div class="prob-bar-container">
+                                    <div id="ms-prob-bar" class="prob-bar ms-bar"></div>
+                                    <div id="ms-prob-value" class="prob-value"></div>
+                                </div>
+                            </div>
+                            <div class="prob-item">
+                                <div class="prob-label">NMO-SD Probability:</div>
+                                <div class="prob-bar-container">
+                                    <div id="nmosd-prob-bar" class="prob-bar nmosd-bar"></div>
+                                    <div id="nmosd-prob-value" class="prob-value"></div>
+                                </div>
+                            </div>
+                            <div class="prob-item">
+                                <div class="prob-label">Control Probability:</div>
+                                <div class="prob-bar-container">
+                                    <div id="control-prob-bar" class="prob-bar control-bar"></div>
+                                    <div id="control-prob-value" class="prob-value"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="model-info">
+                        <div class="model-used">Model: <span id="model-used"></span></div>
+                        <div class="features-used">
+                            <div>Features Used:</div>
+                            <div id="features-used-list"></div>
+                        </div>
+                    </div>
+                    <div id="feedback-message" class="feedback-message"></div>
+                </div>
+            </div>
+        </div>
+        <!-- Updated Guidelines Modal -->
+        <div id="guidelines-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2><i class="fas fa-info-circle"></i> Input Guidelines</h2>
+                    <button class="close-modal">×</button>
+                </div>
+                <div class="modal-body">
+                    <p class="modal-info">To receive an accurate prediction, please provide at least one of the following options:</p>
+                    <ul class="guidelines-list">
+                        <li class="guideline-item">
+                            <i class="fas fa-check-circle"></i>
+                            <div class="guideline-content">
+                                <span class="option-text"><strong>Option 1: At least 3 features from VEP features:</strong></span>
+                                <span class="feature-list">VEP-Right eye_amp, VEP_Right eye latency, VEP-Left eye_amp, VEP_Left eye latency.</span>
+                            </div>
+                        </li>
+                        <li class="guideline-item">
+                            <i class="fas fa-check-circle"></i>
+                            <div class="guideline-content">
+                                <span class="option-text"><strong>Option 2: From OCT features, all these 4 features:</strong></span>
+                                <span class="feature-list">pRNFL, GCIPL Thickness, Macular volume GCIPL, tRNFL.</span>
+                            </div>
+                        </li>
+                        <li class="guideline-item">
+                            <i class="fas fa-check-circle"></i>
+                            <div class="guideline-content">
+                                <span class="option-text"><strong>Option 3: At least 2 features from VEP features</strong></span>
+                                <span class="feature-list">(VEP-Right eye_amp, VEP_Right eye latency, VEP-Left eye_amp, VEP_Left eye latency)</span>
+                                <span class="option-text"><strong>+ all these 3 from OCT</strong></span>
+                                <span class="feature-list">(pRNFL, GCIPL Thickness, Macular volume GCIPL).</span>
+                            </div>
+                        </li>
+                    </ul>
+                    <p class="modal-feature-info"><i class="fas fa-exclamation-triangle"></i> Note: For more accurate detection, you can add additional features.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div id="error-modal" class="modal">
+            <div class="modal-content error-content">
+                <div class="modal-header">
+                    <h2><i class="fas fa-exclamation-triangle"></i> Input Error</h2>
+                    <button class="close-modal">×</button>
+                </div>
+                <div class="modal-body">
+                    <p id="error-message" class="error-message"></p>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Neuro-Optic Detection System © 2025 | Advanced Machine Learning Diagnostic Tool for Neurological Disorders</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
